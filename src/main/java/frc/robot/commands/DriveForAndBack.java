@@ -51,18 +51,10 @@ public class DriveForAndBack extends CommandBase{
         }
         if(isAbled){
             ForBackstage = (Timer.getFPGATimestamp()-initTime)%4;
-            if(0<ForBackstage && ForBackstage<=1){
-                drive.arcadeDrive(autoSpeedControl, 0, false);
-            }else if(1<ForBackstage && ForBackstage<=1.5){
-                drive.arcadeDrive(autoSpeedControl-0.2, 0, false);
-            }else if(1.5<ForBackstage && ForBackstage<=2){
-                drive.arcadeDrive(autoSpeedControl-0.3, 0, false);
-            }else if(2<ForBackstage && ForBackstage<=3){
-                drive.arcadeDrive(-autoSpeedControl, 0, false);
-            }else if(3<ForBackstage && ForBackstage<=3.5){
-                drive.arcadeDrive(-autoSpeedControl+0.2, 0, false);
-            }else if(3.5<ForBackstage && ForBackstage<4){
-                drive.arcadeDrive(-autoSpeedControl+0.3, 0, false);
+            if(0<ForBackstage && ForBackstage<=1.5){
+                drive.arcadeDrive(autoSpeedControl, 0, true);
+            }else if(2<ForBackstage && ForBackstage<=3.5){
+                drive.arcadeDrive(-autoSpeedControl, 0, true);
             }
         }else{
             drive.arcadeDrive(m_driverJoystick.getRawAxis(Constants.leftStick_Y)*teleSpeedControl, m_driverJoystick.getRawAxis(Constants.rightStick_X)*teleSpeedControl, true);
